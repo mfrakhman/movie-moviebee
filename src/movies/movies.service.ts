@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { TmdbService } from './tmdb/tmdb.service';
-import { ReviewsService } from './reviews/reviews.service';
+import { Injectable } from "@nestjs/common";
+import { TmdbService } from "./tmdb/tmdb.service";
+import { ReviewsService } from "./reviews/reviews.service";
 
 @Injectable()
 export class MoviesService {
@@ -9,7 +9,7 @@ export class MoviesService {
     private reviews: ReviewsService,
   ) {}
 
-  getTrending(timeWindow: 'day' | 'week' = 'week') {
+  getTrending(timeWindow: "day" | "week" = "week") {
     return this.tmdb.getTrending(timeWindow);
   }
 
@@ -39,5 +39,13 @@ export class MoviesService {
 
   getTopRated(page = 1) {
     return this.tmdb.getTopRated(page);
+  }
+
+  discoverMovies(page = 1) {
+    return this.tmdb.discoverMovies(page);
+  }
+
+  getPersonDetails(personId: number) {
+    return this.tmdb.getPersonDetails(personId);
   }
 }
