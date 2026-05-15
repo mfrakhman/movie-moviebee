@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  tmdbId    Int      // TMDB movie ID
+  userId    String   // injected by gateway via x-user-id header
+  userEmail String   // injected by gateway via x-user-email header
+  rating    Int      // 1–10
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tmdbId, userId]) // one review per user per movie
+  @@index([tmdbId])
+  @@index([userId])
+}
