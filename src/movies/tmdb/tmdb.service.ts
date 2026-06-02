@@ -32,8 +32,8 @@ export class TmdbService {
     return this.get<any>(`/trending/movie/${timeWindow}`);
   }
 
-  searchMovies(query: string, page = 1) {
-    return this.get<any>("/search/movie", { query, page });
+  searchMovies(query: string, include_adult = true, page = 1) {
+    return this.get<any>("/search/movie", { query, include_adult, page });
   }
 
   getMovieDetails(tmdbId: number) {
