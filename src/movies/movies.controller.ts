@@ -33,7 +33,7 @@ export class MoviesController {
   @Get("search")
   search(
     @Query("q") q: string,
-    @Query("include_adult") include_adult = true,
+    @Query("include_adult") include_adult = false,
     @Query("page") page = 1,
   ) {
     return this.service.search(q, include_adult, +page);

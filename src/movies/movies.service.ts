@@ -13,7 +13,7 @@ export class MoviesService {
     return this.tmdb.getTrending(timeWindow);
   }
 
-  search(query: string, include_adult = true, page = 1) {
+  search(query: string, include_adult = false, page = 1) {
     return this.tmdb.searchMovies(query, include_adult, page);
   }
 
