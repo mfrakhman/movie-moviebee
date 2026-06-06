@@ -31,12 +31,14 @@ export class ReviewsRepository {
     tmdbId: number,
     userId: string,
     userEmail: string,
+    displayName: string,
+    avatarUrl: string,
     dto: CreateReviewDto,
   ) {
     return this.prisma.review.upsert({
       where: { tmdbId_userId: { tmdbId, userId } },
-      create: { tmdbId, userId, userEmail, ...dto },
-      update: { ...dto, userEmail },
+      create: { tmdbId, userId, userEmail, displayName, avatarUrl, ...dto },
+      update: { ...dto, userEmail, displayName, avatarUrl },
     });
   }
 

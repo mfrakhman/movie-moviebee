@@ -45,9 +45,11 @@ export class ReviewsController {
     @Param('tmdbId', ParseIntPipe) tmdbId: number,
     @Headers('x-user-id') userId: string,
     @Headers('x-user-email') userEmail: string,
+    @Headers('x-user-display-name') displayName: string,
+    @Headers('x-user-avatar-url') avatarUrl: string,
     @Body() dto: CreateReviewDto,
   ) {
-    return this.service.upsert(tmdbId, userId, userEmail, dto);
+    return this.service.upsert(tmdbId, userId, userEmail, displayName, avatarUrl, dto);
   }
 
   /** PUT /movies/:tmdbId/reviews — update existing review */

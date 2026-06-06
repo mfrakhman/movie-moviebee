@@ -31,9 +31,11 @@ export class ReviewsService {
     tmdbId: number,
     userId: string,
     userEmail: string,
+    displayName: string,
+    avatarUrl: string,
     dto: CreateReviewDto,
   ) {
-    return this.repo.upsert(tmdbId, userId, userEmail, dto);
+    return this.repo.upsert(tmdbId, userId, userEmail, displayName, avatarUrl, dto);
   }
 
   async update(tmdbId: number, userId: string, dto: UpdateReviewDto) {
